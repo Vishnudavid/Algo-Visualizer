@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Algo Visualizer by vishnu</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html">Algo Visualizer <span>by vishnu</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Bubble Sort</a></li>
+					<li><a href="insertionSort.html">Insertion Sort</a></li>
+					<li><a href="selectionSort.html">Selection Sort</a></li>
+					<li><a href="quickSort.html">Quick Sort</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p><a class="anchorSelector" href="index.html">Bubble Sort</a> | <a class="anchorSelector" href="insertionSort.html">Insertion Sort</a> | <a class="anchorSelector" href="selectionSort.html">Selection Sort</a> | <a class="anchorSelector" href="quickSort.html">Quick Sort</a></p>
+						<h2>Sorting</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper">
+				<div class="content">
+					<header class="align-center">
+						<h2>Quick Sort</h2>
+					</header>
+
+					<!-- User Input -->
+					<div class="UserInput">
+						<form>
+							<!-- Generate Blocks fieldset -->
+							<fieldset class="gererateBlocks">
+								<legend>1. Generate Blocks</legend>
+								<input type="text" name="random" class="UiGenerate" id="random" value="" placeholder="20" pattern = "[0-9]{3}" required />
+								<input type="button" id="randomButton" class="button special UiGenerate" value="Random" onclick="randomBlocks()"/>
+								<input type="text" name="array" class="UiGenerate" id="array" value="" placeholder="[1, 2, 3, 4, 5]" />
+								<input type="button" id="arrayButton" class="button special UiGenerate" value="Array" onclick="arrayBlocks()"/>
+							</fieldset>
+
+							<!-- Options Field Set -->
+							<fieldset class="options">
+								<legend>2. Options</legend>
+								<div class="6u 12u$(small) UiOptions">
+									<input class="optionsSpecial" type="checkbox" id="showLines" name="showLines" checked>
+									<label class="optionsSpecial" for="showLines">Display Active Lines</label>
+								</div>
+								<div class="12u$ UiOptions" >
+									<div class="select-wrapper">
+										<select name="Speed" id="Speed">
+											<option value="">- Speed -</option>
+											<option value="x1">x1</option>
+											<option value="x2">x2</option>
+											<option value="x4">x4</option>
+											<option value="x8">x8</option>
+										</select>
+									</div>
+								</div>
+							</fieldset>
+
+							<!-- Play fieldset -->
+							<fieldset class="visualize">
+								<legend>3. Visualize</legend>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(quickSort)"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(quickSort)"/>
+								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClickedButton()"/>
+								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="resetClickedButton()"/>
+							</fieldset>
+						</form>
+					</div>
+
+					<!-- Visualization and Code-->
+					<div class="bubbleSortBody">
+						<div class="data-container" id="data-container"></div>
+						<div class="code-container">
+							<p class="spaceTime">Time: O(n<sup>2</sup>) | Space: O(1)</p>
+							<div class="codeSection" id="codeSection">
+								<p class="code" id="code0">def quickSort(array):</p>
+								<p class="code" id="code1" style="text-indent: 20px">quickSortHelper(array, 0, len(array) - 1)</p>
+								<p class="code" id="code2" style="text-indent: 20px">return array</p>
+								<p class="code" id="code3">def quickSortHelper(array, startIdx, endIdx):</p>
+								<p class="code" id="code4" style="text-indent: 20px">if startIdx > endIdx:</p>
+								<p class="code" id="code5" style="text-indent: 40px">return</p>
+								<p class="code" id="code6" style="text-indent: 20px">pivotIdx = startIdx</p>
+								<p class="code" id="code7" style="text-indent: 20px">leftIdx = startIdx + 1</p>
+								<p class="code" id="code8" style="text-indent: 20px">rightIdx = endIdx</p>
+								<p class="code" id="code9" style="text-indent: 20px">while rightIdx >= leftIdx:</p>
+								<p class="code" id="code10" style="text-indent: 40px">if array[leftIdx] > array[pivotIdx] and array[rightIdx] < array[pivotIdx]:</p>
+								<p class="code" id="code11" style="text-indent: 60px">swap(leftIdx, rightIdx, array)</p>
+								<p class="code" id="code12" style="text-indent: 40px">if array[leftIdx] <= array[pivotIdx]:</p>
+								<p class="code" id="code13" style="text-indent: 60px">leftIdx += 1</p>
+								<p class="code" id="code14" style="text-indent: 40px">if array[rightIdx] >= array[pivotIdx]:</p>
+								<p class="code" id="code15" style="text-indent: 60px">rightIdx += 1</p>
+								<p class="code" id="code16" style="text-indent: 20px">swap(pivotIdx, rightIdx, array)</p>
+								<p class="code" id="code17" style="text-indent: 20px">leftSubarrayIsSmaller = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1)</p>
+								<p class="code" id="code18" style="text-indent: 20px">if leftSubarrayIsSmaller:</p>
+								<p class="code" id="code19" style="text-indent: 40px">quickSortHelper(array, startIdx, rightIdx - 1)</p>
+								<p class="code" id="code20" style="text-indent: 40px">quickSortHelper(array, rightIdx + 1, endIdx)</p>
+								<p class="code" id="code21" style="text-indent: 20px">else:</p>
+								<p class="code" id="code22" style="text-indent: 40px">quickSortHelper(array, rightIdx + 1, endIdx)</p>
+								<p class="code" id="code23" style="text-indent: 40px">quickSortHelper(array, startIdx, rightIdx - 1)</p>
+								<p class="code" id="code24">def swap(i, j, array):</p>
+								<p class="code" id="code25" style="text-indent: 20px">array[i], array[j] = array[j], array[i]</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="container">
+				<ul class="icons">
+					<li><a href="#" class="icon fa-linkedin" target="_blank"><div class="myMedia">risn</div></a></li>
+					<li><a href="#" class="icon fa-github" target="_blank"><div class="myMedia">rahul7f</div></a></li>
+				</ul>
+			</div>
+		</footer>
+
+
+		<!-- Scripts -->
+			<script src="./assets/js/jquery.min.js"></script>
+			<script src="./assets/js/jquery.scrollex.min.js"></script>
+			<script src="./assets/js/skel.min.js"></script>
+			<script src="./assets/js/util.js"></script>
+			<script src="./assets/js/main.js"></script>
+			<script src="./assets/js/generalFunctions.js"></script>
+			<script src="./assets/js/quickSort.js"></script>
+	</body>
+</html>
